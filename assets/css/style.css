@@ -1,0 +1,43 @@
+.title {
+  font-size: 3.5em;
+  text-align: center;
+}
+
+.start-button {
+  text-align: center; 
+  color: white;
+  background:purple;
+    border-radius:25px;
+    width: 15rem;
+    height: 2rem;
+}
+
+.start-button:hover{
+    cursor:pointer;
+    box-shadow: rgb(174, 174, 207);
+    transition: transform 150ms;
+    transform: scale(1.03);
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.header{
+    display:flex;
+    justify-content: space-between;
+}

@@ -1,30 +1,36 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
-  <head>
-    <title>Coding Quiz Challenge</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-  </head>
-
-  <body>
-    <header>
-      <div class= "large-font">Coding Quiz Challenge</div>
-      <button class="start-button">Try to answer the following code-related questions within the time limit. 
-          Keep in mind that incorrect answers will penalize your score/time by ten seconds!
-    </button>
-    </header>
-
-    <main>
-        <section id="quizQuestions">
-          <div class="questions">
-            <div class="quizQuestions"> </div>
-          </div>
+    <head>
+      
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Coding Quiz Challenge</title>
+        <meta name="Short coding quiz based on Javascript basic concepts." content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    </head>
+    <body>
+      <header class="header">
+        <a href='/highscores.html' id='highscore'> View Highscore</a>
+        <span id ='timer' class ='gameTimer'>Time:</span>
+      </header>
+        <div id ="home" class= "flex-column flex-center">
+          <h1>Coding Quiz Challenge</h1>
+          <p>Try to answer the following code-related questions within the time limit. 
+            Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+        <button class="start-button">Start Quiz!</button>
+        </div>
+      
+    
+      <main>
+        <section>
+        <h2 id = "question" class ="question"></h2>
+        
         </section>
 
-        <main>
-            <section>
-              <div class="questions">
-                <div class="quizQuestions"> </div>
-              </div>
-            </section>
+
+
+
+        <script src="/assets/js/script.js" async defer></script>
+    </body>
+</html>
