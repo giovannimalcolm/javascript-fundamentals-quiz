@@ -44,5 +44,14 @@
 
 .questions{
 
-    
+
+}
+
+.answerButton{
+    text-align: center; 
+    color: white;
+    background:purple;
+    border-radius:25px;
+    width: 15rem;
+    height: 2rem;
 }
