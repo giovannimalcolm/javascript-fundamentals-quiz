@@ -5,6 +5,7 @@ var printQuizEl = document.querySelector('.startQuiz')
 var feedback = document.querySelector('.feedback')
 var clickedAnswer = document.querySelector('.answerButton')
 var selectBubble;
+var endOfGame = document.querySelector('.endOfGame')
 
 
 //arrays of arrays of questions and their answers. easy indexing 
@@ -27,8 +28,6 @@ function init() {
 
 //when start button is clicked the first question is printed to the screen and timer starts
 function startQuiz() {
-
-
     printQuestion();
     startTimer();
 }
@@ -52,6 +51,7 @@ function printQuestion() {
         document.body.addEventListener("click", clickButtons);
         // ^ one handler for all clicks
         function clickButtons(evt) {
+            
             const from = evt.target;
             if (from.className != 'answerButton') { return; }
             // ^check if the element clicked is one of the elements you want to handle 
@@ -59,7 +59,9 @@ function printQuestion() {
             console.log("you clicked " + from.id);
             clickedAnswer = from.id;
             console.log('at chooseanswer', questionNum)
+            document.body.removeEventListener('click', clickButtons);
             rightOrWrong();
+            return;
         }
     }())
 }
@@ -83,27 +85,28 @@ function timerClick() {
 }
 
 //checks if inputted answer is correct or not. if wrong then  subtract 10 from timer (not added yet)
-//when this gets to the second question it breaks? console log shows everything is right. clickedAnswer and correctAnswers[1] both = 2
-//before the if statement is hit a second time but the code returns "false!" instead of correct
 function rightOrWrong() {
+    console.log('start of RoW' ,questionNum)
     console.log('current correct answer is', correctAnswers[questionNum])
+    
     console.log('you clicked', clickedAnswer)
     if (clickedAnswer == correctAnswers[questionNum]) {
-        feedback.textContent = ''
         feedback.textContent = 'Correct!'
     }
     else {
         feedback.textContent = 'False!'
+        timer = timer -
     }
-    console.log('at row after if', questionNum)
     questionNum = questionNum + 1;
     document.querySelectorAll('.answerButton').forEach(e => e.remove());
-    console.log(completeQuiz)
-    console.log('at row after iter', questionNum)
-    printQuestion();
+   printQuestion();
     return;
 }
 
+function gameOver() {
+
+
+}
 startBtnEl.addEventListener("click", startQuiz); // add start button function to the button 
 init(); // just a call
 
