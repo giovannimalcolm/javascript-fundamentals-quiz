@@ -50,8 +50,8 @@ function printQuestion() {
 function startTimer() {
     timer = setInterval(function () {
         if (timer > 0) {
-            timer--;
             console.log(timer);
+            timer--;
             timerEl.textContent = timer;
         }
         else {
