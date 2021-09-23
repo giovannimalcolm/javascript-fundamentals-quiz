@@ -13,8 +13,8 @@ var completeQuiz = [
     ['A very useful tool used during development and debugging for printing content ot the debugger is:', '1. Javascript', '2. Terminal / Bash', '3. For Loops', '4. Console.log', '4. Console.log']
 ]
 
-timer = 75;
-questionNum = 0;
+var timer = 75;
+var questionNum = 1;
 
 
 function init() {
@@ -24,22 +24,24 @@ function init() {
 
 //when start button is clicked the first question is printed to the screen and timer starts
 function startQuiz() {
-    printQuizEl.addEventListener('click', function () {
+  //  printQuizEl.addEventListener('click', function () {
 
         printQuestion();
         startTimer();
-    })
+        
+
 }
 
 //function to print questions. will iterate thru "completeQuiz" and pull first index of each array element
 // to get questions. the index thru to print answer choices
 function printQuestion() {
 
-    for (i = 0; i < completeQuiz[questionNum].length; i++) {
-        printQuizEl.textContent = completeQuiz[QuestionNum][0];
+    for (i = 1; i < completeQuiz[questionNum].length-1; i++) {
+        printQuizEl.textContent = completeQuiz[questionNum][0];
         var selectBubble = document.createElement("button");
+        selectBubble.classList.add('start-button');
         document.body.appendChild(selectBubble);
-        selectBubble.textContent = completeQuiz[QuestionNum][i+1];
+        selectBubble.textContent = completeQuiz[questionNum][i];
 
     }
 }
@@ -49,6 +51,7 @@ function startTimer() {
     timer = setInterval(function () {
         if (timer > 0) {
             timer--;
+            console.log(timer);
             timerEl.textContent = timer;
         }
         else {
