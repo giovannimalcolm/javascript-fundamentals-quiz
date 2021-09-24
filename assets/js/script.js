@@ -8,8 +8,11 @@ var selectBubble;
 var endOfGame = document.querySelector('.endOfGame')
 var timerID;
 var finalScore = document.querySelector(".lose");
-var subButton;
-//var nameForm = document.createElement('div');
+var subButton = document.querySelector('.btn')
+var nameForm = document.getElementById('nameForm');
+nameForm.className += " " + 'invisible';
+var scoreBoard;
+var playerName;
 
 
 //arrays of arrays of questions and their answers. easy indexing 
@@ -25,9 +28,9 @@ var timer = 75;
 var questionNum = 0;
 
 
-function init() {
-    
-//getScore();
+function init() { 
+getScore();
+getName();
 }
 
 //when start button is clicked the first question is printed to the screen and timer starts
@@ -116,52 +119,46 @@ finalScore.classList.add('finalscore');
 document.body.appendChild(finalScore);
 finalScore.textContent = 'Your final score is ' + timer + '.';
 clearInterval(timerID);
-//setScore();
-var div = document.createElement('div');
-div.class = 'form-group';
-var label = document.createElement('label');
-label.class = 'playerName';
-label.innerHTML = 'Enter Name';
-label.for = 'playerName';
-var div1 = document.createElement('div');
-var inputName = document.createElement('input');
-inputName.class = 'form-control';
-inputName.id = 'inputText';
-inputName.placeholder = 'Enter your name';
-var subButton = document.createElement('button');
-subButton.class = 'btn btn-primary mb-3';
-subButton.innerHTML = 'Submit';
-subButton.for = 'submit'
-div.appendChild(label);
-div1.appendChild(inputName);
-div.appendChild(div1);
-div.appendChild(subButton);
-document.body.appendChild(div);
-
+nameForm.className = 'row g-3';
+setScore();
 }
 
 function setScore() {
-    finalScore.textContent = scoreBoard;
-    localStorage.setItem("score", scoreBoard);
+    scoreBoard = timer;
+    var scoreBoardHistory = JSON.parse(localStorage.getItem('setScore')) || [];
+    scoreBoardHistory.push(scoreBoard);
+    localStorage.setItem("setScore", JSON.stringify(scoreBoardHistory));
   }
 
 function getScore() {
-    var storedScores = localStorage.getItem("score");
-    if (storedScores === null) {
-      /// text content is empty
-    } else {
-      scoreBoard = storedScores;
-    }
-    finalScore.textContent = scoreBoard;
+    var storedScores = localStorage.getItem("setScore");
+    console.log(storedScores)
   }
 
   function setName(){
-      
-
+    playerName = document.getElementById('name2').value;
+    var nameHistory = JSON.parse(localStorage.getItem('setName')) || [];
+    nameHistory.push(playerName);
+    localStorage.setItem("setName", JSON.stringify(nameHistory));
 
   }
+  function getName() {
+    var storedNames = localStorage.getItem("setName");
+    console.log(storedNames)
+  }
 
-subButton.addEventListener("click",setName);
+  //function to print current high scores
+function printScores(){ 
+for (i=0; i < storedNames.length; i++){
+    var scores = document.querySelector('.scores')
+    //var selectBubble = document.createElement("button");
+    scores.textContent =  storedNames[i] + ' - ' + storedScores[i];
+
+}
+}
+/// need to only save score if name is inputted
+
+subButton.addEventListener("click",setName, setScore);
 startBtnEl.addEventListener("click", startQuiz); // add start button function to the button 
 init(); // just a call
 
