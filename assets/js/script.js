@@ -6,6 +6,7 @@ var feedback = document.querySelector('.feedback')
 var clickedAnswer = document.querySelector('.answerButton')
 var selectBubble;
 var endOfGame = document.querySelector('.endOfGame')
+var timerID;
 
 
 //arrays of arrays of questions and their answers. easy indexing 
@@ -36,6 +37,7 @@ function startQuiz() {
 // to get questions. the index thru to print answer choice buttons. 
 function printQuestion() {
 
+    if (questionNum != completeQuiz.length){
     for (i = 1; i < completeQuiz[questionNum].length - 1; i++) {
         printQuizEl.textContent = completeQuiz[questionNum][0];
         var selectBubble = document.createElement("button");
@@ -65,10 +67,15 @@ function printQuestion() {
         }
     }())
 }
+else {
+    gameOver();
+}
+}
 
 //start the timer
 function startTimer() {
     var timerID = setInterval(timerClick, 1000);
+
 }
 
 function timerClick() {
@@ -76,13 +83,15 @@ function timerClick() {
         console.log(timer);
         timer--;
         timerEl.textContent = timer;
-        console.log(timerEl);
     }
     else {
         gameOver(); /// add game over function to display scoreboard and final time
         return;
     }
 }
+
+
+
 
 //checks if inputted answer is correct or not. if wrong then  subtract 10 from timer (not added yet)
 function rightOrWrong() {
@@ -92,21 +101,29 @@ function rightOrWrong() {
     console.log('you clicked', clickedAnswer)
     if (clickedAnswer == correctAnswers[questionNum]) {
         feedback.textContent = 'Correct!'
+        setTimeout(function(){
+            document.getElementById("feedback").innerHTML = '';
+        }, 3000);
     }
     else {
         feedback.textContent = 'False!'
-        timer = timer -
+        setTimeout(function(){
+            document.getElementById("feedback").innerHTML = '';
+        }, 3000);
+        timer = timer -10;
     }
     questionNum = questionNum + 1;
     document.querySelectorAll('.answerButton').forEach(e => e.remove());
-   printQuestion();
+    printQuestion();
     return;
 }
 
 function gameOver() {
-
-
+printQuizEl.textContent = 'All Done!'
+clearInterval(timerID);
 }
+
+
 startBtnEl.addEventListener("click", startQuiz); // add start button function to the button 
 init(); // just a call
 
