@@ -7,6 +7,7 @@ var clickedAnswer = document.querySelector('.answerButton')
 var selectBubble;
 var endOfGame = document.querySelector('.endOfGame')
 var timerID;
+var finalScore;
 
 
 //arrays of arrays of questions and their answers. easy indexing 
@@ -36,8 +37,9 @@ function startQuiz() {
 //function to print questions. will iterate thru "completeQuiz" and pull first index of each array element
 // to get questions. the index thru to print answer choice buttons. 
 function printQuestion() {
-
-    if (questionNum != completeQuiz.length){
+    console.log('questionNum is', questionNum);
+    console.log('completeQuiz os', completeQuiz)
+    if (questionNum < completeQuiz.length  && timer != 0){
     for (i = 1; i < completeQuiz[questionNum].length - 1; i++) {
         printQuizEl.textContent = completeQuiz[questionNum][0];
         var selectBubble = document.createElement("button");
@@ -45,8 +47,6 @@ function printQuestion() {
         selectBubble.setAttribute("id", i);
         document.body.appendChild(selectBubble);
         selectBubble.textContent = completeQuiz[questionNum][i];
-        console.log(selectBubble)
-
     }
     //only when one of the buttons is clicked will a "clickedAnswer" be logged and rightOrWrong will run 
     (function chooseAnswer() {
@@ -58,9 +58,7 @@ function printQuestion() {
             if (from.className != 'answerButton') { return; }
             // ^check if the element clicked is one of the elements you want to handle 
             //  if it's not one of the 'buttons', do nothing
-            console.log("you clicked " + from.id);
             clickedAnswer = from.id;
-            console.log('at chooseanswer', questionNum)
             document.body.removeEventListener('click', clickButtons);
             rightOrWrong();
             return;
@@ -68,37 +66,27 @@ function printQuestion() {
     }())
 }
 else {
+    
     gameOver();
 }
 }
 
 //start the timer
 function startTimer() {
-    var timerID = setInterval(timerClick, 1000);
-
-}
-
-function timerClick() {
-    if (timer > 0) {
-        console.log(timer);
-        timer--;
-        timerEl.textContent = timer;
-    }
-    else {
-        gameOver(); /// add game over function to display scoreboard and final time
-        return;
-    }
-}
-
-
+    // Sets timer
+    timerID = setInterval(function() {
+      timer--;
+      timerEl.textContent = ("Time: " + timer + 's')
+      if (timer <= 0) {
+        document.querySelectorAll('.answerButton').forEach(e => e.remove());
+        gameOver();
+        }
+    }, 1000);
+  }
 
 
 //checks if inputted answer is correct or not. if wrong then  subtract 10 from timer (not added yet)
 function rightOrWrong() {
-    console.log('start of RoW' ,questionNum)
-    console.log('current correct answer is', correctAnswers[questionNum])
-    
-    console.log('you clicked', clickedAnswer)
     if (clickedAnswer == correctAnswers[questionNum]) {
         feedback.textContent = 'Correct!'
         setTimeout(function(){
@@ -111,6 +99,7 @@ function rightOrWrong() {
             document.getElementById("feedback").innerHTML = '';
         }, 3000);
         timer = timer -10;
+        timerEl.textContent = ("Time: " + timer + 's')
     }
     questionNum = questionNum + 1;
     document.querySelectorAll('.answerButton').forEach(e => e.remove());
@@ -120,6 +109,10 @@ function rightOrWrong() {
 
 function gameOver() {
 printQuizEl.textContent = 'All Done!'
+finalScore = document.createElement("button");
+finalScore.classList.add('finalscore');
+document.body.appendChild(finalScore);
+finalScore.textContent = 'Your final score is ' + timer + '.';
 clearInterval(timerID);
 }
 
