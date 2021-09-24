@@ -54,6 +54,9 @@
     border-radius:25px;
     width: 15rem;
     height: 2rem;
+    display: flex;
+    flex-direction: row;
+  justify-content: center;
 }
 
 .clrbtn{
@@ -65,4 +68,10 @@
 .list-group-item{
   color:blue;
   text: center;
+}
+
+.finalscore{
+  display: flex;
+  justify-content: center;
+  
 }

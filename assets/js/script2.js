@@ -28,13 +28,14 @@ function printScores() {
         document.body.appendChild(scores);
         var sum = i + 1
         scores.textContent = sum + '. ' + storedNames[i] + ' - ' + storedScores[i];
-        sortScores(storedScores,storedNames);
     }
+    sortScores(storedScores,storedNames);
+
 }
 
 function sortScores() {
-    storedNames.sort(function (storedScores, storedNames) {
-        return storedScores.indexOf(storedScores) - storedScores.indexOf(storedNames);
+    storedNames.sort(function (a,b) {
+        return storedScores.indexOf(a) - storedScores.indexOf(b);
     });
     console.log(storedScores)
 }
@@ -43,5 +44,9 @@ function clearStorage(){
     localStorage.clear();
 }
 
+function refresh(){
+    window.location.href = window.location.href;
+}
 
-clrbtn.addEventListener("click",clearStorage);
+clrbtn.addEventListener("click", clearStorage);
+clrbtn.addEventListener("click",  refresh);

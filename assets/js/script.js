@@ -11,7 +11,7 @@ var finalScore = document.querySelector(".lose");
 var subButton = document.querySelector('.btn')
 var nameForm = document.getElementById('nameForm');
 nameForm.className += " " + 'invisible';
-var scoreBoard;
+var scoreBoard = []
 var playerName;
 
 
@@ -98,7 +98,15 @@ function rightOrWrong() {
             document.getElementById("feedback").innerHTML = '';
         }, 3000);
     }
-    else {
+    else if (clickedAnswer !== correctAnswers[questionNum] && timer <=9){
+        feedback.textContent = 'False!'
+        setTimeout(function(){
+            document.getElementById("feedback").innerHTML = '';
+        }, 3000);
+        timer = 0;
+        timerEl.textContent = ("Time: " + timer + 's')
+    }
+    else if (clickedAnswer !== correctAnswers[questionNum]) {
         feedback.textContent = 'False!'
         setTimeout(function(){
             document.getElementById("feedback").innerHTML = '';
@@ -113,14 +121,16 @@ function rightOrWrong() {
 }
 
 function gameOver() {
+printQuizEl.classList.remove('p')
+printQuizEl.classList.add('h1')
 printQuizEl.textContent = 'All Done!'
 finalScore = document.createElement("p");
-finalScore.classList.add('finalscore');
+finalScore.classList.add('finalscore')
 document.body.appendChild(finalScore);
 finalScore.textContent = 'Your final score is ' + timer + '.';
 clearInterval(timerID);
-nameForm.className = 'row g-3';
-setScore();
+nameForm.className = 'd-flex justify-content-center';
+console.log(timer)
 }
 
 function setScore() {
@@ -151,14 +161,18 @@ function getScore() {
 function printScores(){ 
 for (i=0; i < storedNames.length; i++){
     var scores = document.querySelector('.scores')
-    //var selectBubble = document.createElement("button");
     scores.textContent =  storedNames[i] + ' - ' + storedScores[i];
 
 }
 }
-/// need to only save score if name is inputted
 
-subButton.addEventListener("click",setName, setScore);
+function refresh(){
+    location.reload();
+}
+
+
+subButton.addEventListener("click",setScore);
+subButton.addEventListener("click",setName);
 startBtnEl.addEventListener("click", startQuiz); // add start button function to the button 
 init(); // just a call
 
