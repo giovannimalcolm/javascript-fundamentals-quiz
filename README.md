@@ -8,3 +8,12 @@ The game can be restarted by clicked on the "Play again" link.
 
 The application can be found at: https://giovannimalcolm.github.io/javascript-fundamentals quiz/
 
+![ScreenShot1](https://github.com/giovannimalcolm/javascript-fundamentals-quiz/blob/main/images/First%20PM.png?raw=true)
+
+![ScreenShot2](https://github.com/giovannimalcolm/javascript-fundamentals-quiz/blob/main/images/Second.png?raw=true)
+
+![ScreenShot3](https://github.com/giovannimalcolm/javascript-fundamentals-quiz/blob/main/images/Third.png?raw=true)
+
+![Screenshot4](https://github.com/giovannimalcolm/javascript-fundamentals-quiz/blob/main/images/Fourth.png?raw=true)
+
+![Screenshot5](https://github.com/giovannimalcolm/javascript-fundamentals-quiz/blob/main/images/Fifth.png?raw=true)
