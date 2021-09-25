@@ -29,7 +29,6 @@ function printScores() {
         var sum = i + 1
         scores.textContent = sum + '. ' + storedNames[i] + ' - ' + storedScores[i];
     }
-    sortScores(storedScores, storedNames);
 }
 
 function clearStorage() {
@@ -37,7 +36,7 @@ function clearStorage() {
 }
 
 function refresh() {
-    window.location.href = window.location.href;
+    window.location.reload();
 }
 
 clrbtn.addEventListener("click", clearStorage); //clear user local storage upon button press
