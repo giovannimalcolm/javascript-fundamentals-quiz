@@ -1,27 +1,27 @@
+//starting variables
 var storedScores = localStorage.getItem("setScore");
 var storedNames = localStorage.getItem("setName");
 var clrbtn = document.querySelector('.clrbtn')
+
+//int here again incase user first visits this page 
 getScore();
 getName();
-
-if (storedNames != null && storedScores != null){
-printScores();
+//if there is something in the local storage then print it
+if (storedNames != null && storedScores != null) {
+    printScores();
 }
 
 function getScore() {
     storedScores = JSON.parse(localStorage.getItem("setScore"));
-    console.log(storedScores)
 }
 
 
 function getName() {
     storedNames = JSON.parse(localStorage.getItem("setName"));
-    console.log(storedNames)
 }
 
 function printScores() {
     for (i = 0; i < storedNames.length; i++) {
-        console.log(i)
         var scores = document.createElement("li");
         scores.classList.add('list-group-item');
         scores.setAttribute("id", scores);
@@ -29,24 +29,16 @@ function printScores() {
         var sum = i + 1
         scores.textContent = sum + '. ' + storedNames[i] + ' - ' + storedScores[i];
     }
-    sortScores(storedScores,storedNames);
-
+    sortScores(storedScores, storedNames);
 }
 
-function sortScores() {
-    storedNames.sort(function (a,b) {
-        return storedScores.indexOf(a) - storedScores.indexOf(b);
-    });
-    console.log(storedScores)
-}
-
-function clearStorage(){
+function clearStorage() {
     localStorage.clear();
 }
 
-function refresh(){
+function refresh() {
     window.location.href = window.location.href;
 }
 
-clrbtn.addEventListener("click", clearStorage);
-clrbtn.addEventListener("click",  refresh);
+clrbtn.addEventListener("click", clearStorage); //clear user local storage upon button press
+clrbtn.addEventListener("click", refresh); //refresh upon clearing scores

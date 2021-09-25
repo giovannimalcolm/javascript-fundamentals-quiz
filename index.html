@@ -1,47 +1,48 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-    <head>
-      
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Coding Quiz Challenge</title>
-        <meta name="Short coding quiz based on Javascript basic concepts." content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
 
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Coding Quiz Challenge</title>
+  <meta name="Short coding quiz based on Javascript basic concepts." content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+</head>
 
-    </head>
-    <body>
+<body>
+  <header class="header">
+    <a href="/highscores.html" id="highscore"> View Highscores</a>
+    <span id="timer" class="timer">Time: 75s</span>
+  </header>
+  <div id="home" class="flex-column flex-center startQuiz">
+    <h1>Coding Quiz Challenge</h1>
+    <p>
+      Try to answer the following code-related questions within the time
+      limit. Keep in mind that incorrect answers will penalize your score/time
+      by ten seconds!
+    </p>
+    <button class="start-button">Start Quiz!</button>
+  </div>
 
-      <header class="header ">
-        <a href='/highscores.html' id='highscore'> View Highscores</a>
-        <span id ='timer' class ='timer'>Time: 75s</span>
-      </header>
-        <div id="home" class="flex-column flex-center startQuiz">
-          <h1>Coding Quiz Challenge</h1>
-          <p>Try to answer the following code-related questions within the time limit. 
-            Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-        <button class="start-button">Start Quiz!</button>
-        </div>
-      
-    
-        <section>
-          <p id = "feedback" class ="feedback"></p>
-    
-          </section>
-      
-        
+  <section>
+    <p id="feedback" class="feedback"></p>
+  </section>
 
-        <form class="d-flex justify-content-center invisible" id = 'nameForm'>
-          <div class="col-auto">
-            <label for="name2" class="visually-hidden">Submit your name to record your score!</label>
-            <input type="name" class="form-control" id="name2" placeholder="Name Here">
-         
-            <button type="submit" class="btn btn-primary" id ="nameInput">Submit</button>
-          </div>
-        </form>
+  <!--This is the form after the game is completed but it is hidden until the game is over. The invisible class type is then removed-->
+  <form class="d-flex justify-content-center invisible" id="nameForm">
+    <div class="col-auto">
+      <label for="name2" class="visually-hidden">Submit your name to record your score!</label>
+      <input type="name" class="form-control" id="name2" placeholder="Name Here" />
 
-        <script src="./assets/js/script.js" async defer></script>
-    </body>
+      <button type="submit" class="btn btn-primary" id="nameInput">
+        Submit
+      </button>
+    </div>
+  </form>
+
+  <script src="./assets/js/script.js" async defer></script>
+</body>
+
 </html>
