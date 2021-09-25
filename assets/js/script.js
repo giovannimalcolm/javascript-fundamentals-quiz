@@ -10,7 +10,7 @@ var timerID;
 var finalScore = document.querySelector(".lose");
 var subButton = document.querySelector('.btn')
 var nameForm = document.getElementById('nameForm');
-nameForm.className += " " + 'invisible';
+//nameForm.className += " " + 'invisible';
 var scoreBoard = []
 var playerName;
 
