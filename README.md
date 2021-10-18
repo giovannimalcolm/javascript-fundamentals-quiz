@@ -6,6 +6,12 @@ The game is over when the timer runs out or when all questions are answered. Whe
 The scoreboard can be cleared on the scoreboard page '/highscores.html' upon clicking the "Clear Scores" button. 
 The game can be restarted by clicked on the "Play again" link. 
 
+Technologies Used:
+* HTML
+* CSS
+* Javascript
+* Jquery
+
 The application can be found at: https://giovannimalcolm.github.io/javascript-fundamentals-quiz/
 
 ![ScreenShot1](https://github.com/giovannimalcolm/javascript-fundamentals-quiz/blob/main/images/1.png?raw=true)
